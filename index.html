@@ -92,9 +92,80 @@
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
+	<!-- Updated style for the page loader with dark mode support -->
+	<style>
+		#preloader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #fff;
+			z-index: 9999;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#preloader .loader {
+			width: 180px;
+			height: 180px;
+			position: relative;
+		}
+
+		#preloader .loader img {
+			width: 120px;
+			height: auto;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		#preloader .loader::before {
+			content: "";
+			width: 180px;
+			height: 180px;
+			border-radius: 50%;
+			border: 3px solid #f3f3f3;
+			border-top: 3px solid #3498db;
+			animation: spin 1s linear infinite;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		@keyframes spin {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		/* Dark mode styles */
+		[data-bs-theme="dark"] #preloader {
+			background-color: #212529;
+		}
+
+		[data-bs-theme="dark"] #preloader .loader::before {
+			border-color: #2c3237;
+			border-top-color: #3498db;
+		}
+	</style>
+
 </head>
 
 <body>
+
+	<!-- Add this updated preloader at the beginning of the body -->
+	<div id="preloader">
+		<div class="loader">
+			<img src="assets/images/logo.png" alt="Loading...">
+		</div>
+	</div>
 
 	<!-- Header START -->
 	<header class="navbar-light py-3">
@@ -105,9 +176,9 @@
 					<div class="col-4">
 						<!-- Logo START -->
 						<a class="navbar-brand" href="index.html">
-							<img class="light-mode-item navbar-brand-item d-inline h-40px h-md-60px"
-								src="assets/images/logo.png" logo">
-							<img class="dark-mode-item navbar-brand-item d-inline h-40px h-md-60px"
+							<img class="light-mode-item navbar-brand-item d-inline h-70px h-md-90px"
+								src="assets/images/logo.png" alt="logo">
+							<img class="dark-mode-item navbar-brand-item d-inline h-70px h-md-90px"
 								src="assets/images/logo.png" alt="logo">
 						</a>
 						<!-- Logo END -->
@@ -119,7 +190,7 @@
 
 						<!-- Toggler button and stay button -->
 						<div class="d-flex align-items-center justify-content-end">
-							
+
 
 							<!-- Dark mode option START -->
 							<div class="nav-item dropdown ms-2 me-3"> <!-- Added me-3 class for right margin -->
@@ -154,7 +225,7 @@
 												<path
 													d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
 												<path
-													d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+													d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM3.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L3.863.1z" />
 												<use href="#"></use>
 											</svg>Dark
 										</button>
@@ -174,7 +245,7 @@
 							</div>
 							<!-- Dark mode option END -->
 
-							
+
 						</div>
 
 					</div>
@@ -192,74 +263,77 @@
 
 		<!-- =======================
 Main Banner START -->
-<section class="py-0">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-11 mx-auto">
-                <!-- Slider START -->
-                <div class="tiny-slider arrow-round arrow-blur arrow-hover rounded-3 overflow-hidden">
-                    <div class="tiny-slider-inner" data-gutter="0" data-arrow="true" data-dots="false" data-items="1">
-                        <!-- Card item START -->
-                        <div class="card overflow-hidden h-400px h-sm-600px rounded-0"
-                            style="background-image:url(assets/images/services/cab_service.jpg); background-position: center; background-size: cover;">
-                            <!-- Background dark overlay -->
-                            <div class="bg-overlay bg-dark opacity-3"></div>
-                            <!-- Card image overlay -->
-                            <div class="card-img-overlay d-flex align-items-center">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-11 col-lg-7">
-                                            <h6 class="text-white fw-normal mb-0">🚕 Travel with Comfort</h6>
-                                            <!-- Title -->
-                                            <h1 class="text-white display-6">24/7 Cab Service Available</h1>
-                                            <a href="#" class="btn btn-primary mb-0">
-                                                <i class="fas fa-taxi me-2"></i>Book a Ride
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card item END -->
+		<section class="py-0">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-11 mx-auto">
+						<!-- Slider START -->
+						<div class="tiny-slider arrow-round arrow-blur arrow-hover rounded-3 overflow-hidden">
+							<div class="tiny-slider-inner" data-gutter="0" data-arrow="true" data-dots="false"
+								data-items="1">
+								<!-- Card item START -->
+								<div class="card overflow-hidden h-400px h-sm-600px rounded-0"
+									style="background-image:url(assets/images/services/cab_service.jpg); background-position: center; background-size: cover;">
+									<!-- Background dark overlay -->
+									<div class="bg-overlay bg-dark opacity-3"></div>
+									<!-- Card image overlay -->
+									<div class="card-img-overlay d-flex align-items-center">
+										<div class="container">
+											<div class="row">
+												<div class="col-11 col-lg-7">
+													<h6 class="text-white fw-normal mb-0">🚕 Travel with Comfort</h6>
+													<!-- Title -->
+													<h1 class="text-white display-6">24/7 Cab Service Available</h1>
+													<button href="#" class="btn btn-primary mb-0" data-bs-toggle="modal"
+													data-bs-target="#bookingModal">
+														<i class="fas fa-taxi me-2"></i>Book a Ride
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Card item END -->
 
-                        <!-- Card item START -->
-                        <div class="card overflow-hidden h-400px h-sm-600px rounded-0"
-                            style="background-image:url(assets/images/services/south_indian_package_trips.field.jpg); background-position: center; background-size: cover;">
-                            <!-- Background dark overlay -->
-                            <div class="bg-overlay bg-dark opacity-3"></div>
-                            <!-- Card image overlay -->
-                            <div class="card-img-overlay d-flex align-items-center">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-11 col-lg-7">
-                                            <h6 class="text-white fw-normal mb-0">🌴 Explore South India</h6>
-                                            <!-- Title -->
-                                            <h1 class="text-white display-6">Unforgettable Package Trips</h1>
-                                            <a href="#" class="btn btn-primary mb-0">
-                                                <i class="fas fa-map-marked-alt me-2"></i>Plan Your Trip
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card item END -->
+								<!-- Card item START -->
+								<div class="card overflow-hidden h-400px h-sm-600px rounded-0"
+									style="background-image:url(assets/images/services/south_indian_package_trips.field.jpg); background-position: center; background-size: cover;">
+									<!-- Background dark overlay -->
+									<div class="bg-overlay bg-dark opacity-3"></div>
+									<!-- Card image overlay -->
+									<div class="card-img-overlay d-flex align-items-center">
+										<div class="container">
+											<div class="row">
+												<div class="col-11 col-lg-7">
+													<h6 class="text-white fw-normal mb-0">🌴 Explore South India</h6>
+													<!-- Title -->
+													<h1 class="text-white display-6">Unforgettable Package Trips</h1>
+													<button href="#" class="btn btn-primary mb-0" data-bs-toggle="modal"
+													data-bs-target="#bookingModal">
+														<i class="fas fa-map-marked-alt me-2"></i>Plan Your Trip
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Card item END -->
 
-                        <!-- Add more card items for other services like Jeep Safari, House Boat, and Room Booking -->
+								<!-- Add more card items for other services like Jeep Safari, House Boat, and Room Booking -->
 
-                    </div>
-                </div>
-                <!-- Slider END -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- =======================
+							</div>
+						</div>
+						<!-- Slider END -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- =======================
 Main Banner END -->
 
 		<!-- =======================
 Special offer START -->
-		<section class="pb-0">
+		<section id="services" class="pb-0">
 			<div class="container">
 				<!-- Title -->
 				<div class="row mb-4">
@@ -277,7 +351,8 @@ Special offer START -->
 							<div class="card-body text-center">
 								<h6 class="card-title"><a href="#">Cab Service</a></h6>
 								<small>Available 24/7</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark">Book Now</a></div>
+								<div class="mt-2"><button class="btn btn-sm btn-dark book-now" data-bs-toggle="modal"
+										data-bs-target="#bookingModal">Book Now</button></div>
 							</div>
 						</div>
 					</div>
@@ -290,7 +365,8 @@ Special offer START -->
 							<div class="card-body text-center">
 								<h6 class="card-title"><a href="#">South Indian Package Trips</a></h6>
 								<small>Available 24/7</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark">Book Now</a></div>
+								<div class="mt-2"><button class="btn btn-sm btn-dark book-now" data-bs-toggle="modal"
+										data-bs-target="#bookingModal">Book Now</button></div>
 							</div>
 						</div>
 					</div>
@@ -302,7 +378,8 @@ Special offer START -->
 							<div class="card-body text-center">
 								<h6 class="card-title"><a href="#">Jeep Safari</a></h6>
 								<small>Available 24/7</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark">Book Now</a></div>
+								<div class="mt-2"><button class="btn btn-sm btn-dark book-now" data-bs-toggle="modal"
+										data-bs-target="#bookingModal">Book Now</button></div>
 							</div>
 						</div>
 					</div>
@@ -314,7 +391,8 @@ Special offer START -->
 							<div class="card-body text-center">
 								<h6 class="card-title"><a href="#">House Boat</a></h6>
 								<small>Available 24/7</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark">Book Now</a></div>
+								<div class="mt-2"><button class="btn btn-sm btn-dark book-now" data-bs-toggle="modal"
+										data-bs-target="#bookingModal">Book Now</button></div>
 							</div>
 						</div>
 					</div>
@@ -326,7 +404,8 @@ Special offer START -->
 							<div class="card-body text-center">
 								<h6 class="card-title"><a href="#">Room Booking</a></h6>
 								<small>Available 24/7</small>
-								<div class="mt-2"><a href="#" class="btn btn-sm btn-dark">Book Now</a></div>
+								<div class="mt-2"><button class="btn btn-sm btn-dark book-now" data-bs-toggle="modal"
+										data-bs-target="#bookingModal">Book Now</button></div>
 							</div>
 						</div>
 					</div>
@@ -341,7 +420,7 @@ Special offer END -->
 
 		<!-- =======================
 Gallery START -->
-		<section>
+		<section id="gallery">
 			<div class="container-fluid">
 				<!-- Title -->
 				<div class="row mb-md-4">
@@ -496,35 +575,121 @@ Gallery END -->
 
 	<!-- =======================
 Footer START -->
-<footer class="bg-dark">
-    <div class="container">
-        <div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start">
-            <!-- copyright text -->
-            <div class="text-body-secondary text-primary-hover"> Copyrights ©2024 Travel Partner. All rights reserved. </div>
-            <!-- copyright links-->
-            <div class="nav mt-2 mt-lg-0">
-                <ul class="list-inline text-primary-hover mx-auto mb-0">
-                    <li class="list-inline-item me-0"><a class="nav-link text-body-secondary py-1"
-                            href="#">Privacy policy</a></li>
-                    <li class="list-inline-item me-0"><a class="nav-link text-body-secondary py-1"
-                            href="#">Terms and conditions</a></li>
-                    <li class="list-inline-item me-0"><a class="nav-link text-body-secondary py-1 pe-0"
-                            href="#">Refund policy</a></li>
-                </ul>
+	<footer class="bg-dark">
+		<div class="container">
+			<div class="row py-4">
+				<!-- Contact Information -->
+				<div class="col-lg-4 mb-3 mb-lg-0">
+					<h5 class="text-white mb-3">Contact Us</h5>
+					<ul class="list-unstyled text-body-secondary">
+						<li><i class="fas fa-map-marker-alt me-2"></i>Thekkady, Idukki, Kerala, India</li>
+						<li><a href="tel:+918921831566" class="text-body-secondary"><i class="fas fa-phone me-2"></i>+91
+								8921831566</a></li>
+						<li><a href="tel:+919778713397" class="text-body-secondary"><i class="fas fa-phone me-2"></i>+91
+								9778713397</a></li>
+						<li><a href="https://wa.me/919207322397" target="_blank" class="text-body-secondary"><i
+									class="fab fa-whatsapp me-2"></i>+91 9207322397</a></li>
+						<li><a href="https://wa.me/919947103040" target="_blank" class="text-body-secondary"><i
+									class="fab fa-whatsapp me-2"></i>+91 9947103040</a></li>
+					</ul>
+				</div>
+
+				<!-- Quick Links -->
+				<div class="col-lg-4 mb-3 mb-lg-0">
+					<h5 class="text-white mb-3">Quick Links</h5>
+					<ul class="list-unstyled text-body-secondary">
+						<li><a href="#" class="text-body-secondary">Home</a></li>
+						<li><a href="#services" class="text-body-secondary">Our Services</a></li>
+						<li><a href="#gallery" class="text-body-secondary">Gallery</a></li>
+					</ul>
+				</div>
+
+				<!-- Social Media -->
+				<div class="col-lg-4">
+					<h5 class="text-white mb-3">Follow Us</h5>
+					<ul class="list-inline text-body-secondary">
+						<li class="list-inline-item"><a href="https://www.facebook.com/profile.php?id=61564957317620"
+								target="_blank" class="text-body-secondary"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/travelpartner__tkdy/"
+								target="_blank" class="text-body-secondary"><i class="fab fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<hr class="mt-4 mb-0 border-top border-secondary">
+
+			<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start">
+				<!-- copyright text -->
+				<div class="text-body-secondary text-primary-hover"> Copyrights ©2024 Travel Partner. All rights
+					reserved. </div>
+				<!-- copyright links-->
+				<div class="nav mt-2 mt-lg-0">
+					<ul class="list-inline text-primary-hover mx-auto mb-0">
+						<li class="list-inline-item me-0"><a class="nav-link text-body-secondary py-1" href="#">Privacy
+								policy</a></li>
+						<li class="list-inline-item me-0"><a class="nav-link text-body-secondary py-1" href="#">Terms
+								and conditions</a></li>
+						<li class="list-inline-item me-0"><a class="nav-link text-body-secondary py-1 pe-0"
+								href="#">Refund policy</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- =======================
+Footer END -->
+<!-- Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="bookingModalLabel">Contact Us</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h6 class="fw-bold"><i class="fas fa-map-marker-alt me-2"></i>Address</h6>
+                        <p>Thekkady, Idukki, Kerala, India</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h6 class="fw-bold"><i class="fas fa-phone me-2"></i>Phone</h6>
+                        <p><a href="tel:+918921831566" class="text-decoration-none">+91 8921831566</a></p>
+                        <p><a href="tel:+919778713397" class="text-decoration-none">+91 9778713397</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h6 class="fw-bold"><i class="fab fa-whatsapp me-2"></i>WhatsApp</h6>
+                        <p><a href="https://wa.me/919207322397" target="_blank" class="text-decoration-none">+91 9207322397</a></p>
+                        <p><a href="https://wa.me/919947103040" target="_blank" class="text-decoration-none">+91 9947103040</a></p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h6 class="fw-bold"><i class="fas fa-envelope me-2"></i>Email</h6>
+                        <p><a href="mailto:travelpartnertkdy@gmail.com" class="text-decoration-none">travelpartnertkdy@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h6 class="fw-bold"><i class="fas fa-clock me-2"></i>Business Hours</h6>
+                        <p>Monday - Sunday: 24/7</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="https://wa.me/919207322397" target="_blank" class="btn btn-success"><i class="fab fa-whatsapp me-2"></i>WhatsApp Us</a>
             </div>
         </div>
     </div>
-</footer>
-	<!-- =======================
-Footer END -->
+</div>
 
-	
 
 	<!-- Back to top -->
 	<div class="back-top"></div>
 
 	<!-- Bootstrap JS -->
-	<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Vendors -->
 	<script src="assets/vendor/tiny-slider/tiny-slider.js"></script>
@@ -537,6 +702,43 @@ Footer END -->
 
 	<!-- ThemeFunctions -->
 	<script src="assets/js/functions.js"></script>
+
+	<!-- Add this script just before the closing body tag -->
+	<script>
+		// Function to check and apply the current theme to the preloader
+		function applyThemeToPreloader() {
+			const theme = document.documentElement.getAttribute('data-bs-theme');
+			document.getElementById('preloader').setAttribute('data-bs-theme', theme);
+		}
+
+		// Apply theme immediately when the script runs
+		applyThemeToPreloader();
+
+		// Also apply theme when it changes
+		const observer = new MutationObserver(applyThemeToPreloader);
+		observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+
+		const minDisplayTime = 2000; // 2 seconds
+		const startTime = new Date().getTime();
+
+		window.addEventListener('load', function () {
+			const currentTime = new Date().getTime();
+			const elapsedTime = currentTime - startTime;
+
+			if (elapsedTime < minDisplayTime) {
+				setTimeout(hidePreloader, minDisplayTime - elapsedTime);
+			} else {
+				hidePreloader();
+			}
+		});
+
+		function hidePreloader() {
+			var preloader = document.getElementById('preloader');
+			preloader.style.display = 'none';
+			// Disconnect the observer when the preloader is hidden
+			observer.disconnect();
+		}
+	</script>
 
 </body>
 
