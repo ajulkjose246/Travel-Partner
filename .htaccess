@@ -1,0 +1,21 @@
+RewriteEngine On
+
+# Handle service categories - match anything after category name
+RewriteRule ^(cab|trips|safari|houseboat|rooms)$ service-gallery.php?category=$1 [L,QSA]
+
+# Handle login page
+RewriteRule ^login/?$ login.php [L]
+
+# Handle admin page - match anything starting with admin
+RewriteRule ^admin(.*)$ manage-gallery.php [L]
+
+# Handle section anchors
+RewriteRule ^#(services|gallery)$ index.php#$1 [NE,R,L]
+
+# Handle home page - must be last
+RewriteRule ^$ index.php [L]
+
+# Redirect all unmatched URLs to home page
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
